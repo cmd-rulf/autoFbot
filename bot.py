@@ -12,7 +12,7 @@ import sys
 from aiohttp import web
 from dotenv import load_dotenv
 
-from pyrogram import Client, filters
+from pyrogram import Client, filters, utils as pyroutils
 from pyrogram.types import Message
 from pyrogram.errors import RPCError
 
@@ -32,6 +32,10 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+pyroutils.MIN_CHAT_ID = -999999999999
+pyroutils.MIN_CHANNEL_ID = -100999999999999
+bot_start_time = time()
 
 # Configuration
 API_ID = int(os.getenv("API_ID", 0))
